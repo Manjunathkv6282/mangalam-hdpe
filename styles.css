@@ -401,15 +401,16 @@ body {
 /* Mobile & Large Phones (below 768px) */
 @media (max-width: 768px) {
     .section-wrapper.hero-fold {
-        padding: 40px 0; /* Reduce top/bottom padding */
+        margin-top: 70px; 
+        padding: 20px 0;
     }
 
     .hero-grid {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 30px;
-        padding: 0px 25px;
+        display: flex !important;
+        flex-direction: column !important; /* Forces the stack */
+        width: 100% !important;
+        gap: 20px;
+        padding: 0 20px; /* Consistent side spacing */
     }
 
     /* Move Breadcrumb above the Image in stack */
@@ -417,9 +418,34 @@ body {
         align-items: flex-start;
     }
 
+    .carousel-column {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .zoom-container {
+        width: 100%;
+        /* 2. Lock the ratio so it doesn't expand vertically too much */
+        aspect-ratio: 16 / 10; 
+        border-radius: 12px;
+    }
+
+    .carousel-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* Keeps image looking sharp */
+    }
+    
+    /* Ensure arrows are visible but not too big */
+    .nav-arrow {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+    }
+
     .product-title {
-        font-size: 28px;
-        line-height: 1.3;
+        font-size: 24px; /* Slightly smaller for better mobile fit */
+        margin: 15px 0;
     }
 
     /* Adjust Carousel Arrows for fingers */
@@ -444,9 +470,15 @@ body {
         height: 70px;
     }
 
+    .hero-right {
+        width: 100%;
+        text-align: left; /* Keep it professional, don't center */
+    }
+
     /* Stack Badge Row if too wide */
     .badge-row {
-        flex-wrap: wrap;
+        display: flex;
+        flex-wrap: wrap; /* Allows them to drop to a new line if screen is tiny */
         gap: 8px;
     }
 
@@ -459,13 +491,15 @@ body {
     .cta-row {
         display: flex;
         flex-direction: column;
-        gap: 12px;
+        gap: 10px;
+        width: 100%;
     }
 
     .btn-primary, .btn-secondary {
         width: 100%;
         text-align: center;
-        padding: 15px;
+        padding: 16px;
+        font-size: 16px;
     }
 
     .price {

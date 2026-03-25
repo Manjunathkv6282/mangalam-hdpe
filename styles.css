@@ -849,17 +849,25 @@ body {
 /* Content logic */
 .accordion-content {
     max-height: 0;
-    padding: 0 32px;
-    transition: all 0.3s ease;
     opacity: 0;
+    overflow: hidden; /* This MUST be here for the animation */
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+    padding: 0 32px; /* Horizontal padding stays */
+    pointer-events: none; /* Prevents clicking links inside closed items */
 }
 
-.accordion-item.active { border-color: var(--primary-blue); }
-.accordion-item.active .icon-arrow { transform: rotate(180deg); }
+.accordion-item.active { border-color: var(--primary-blue) !important;}
+.accordion-item.active .icon-arrow { 
+    transform: rotate(180deg);
+    background: var(--primary-blue); }
+.accordion-item.active .icon-arrow::after {
+    color: #fff;
+}
 .accordion-item.active .accordion-content {
-    max-height: 200px;
-    padding-bottom: 24px;
+    max-height: 1000px; /* Big enough to fit any text */
     opacity: 1;
+    padding-top: 10px;
+    padding-bottom: 24px;
 }
 
 /* Catalogue Box */
@@ -1103,8 +1111,9 @@ body {
 
 .testimonial-track {
     display: flex;
-    gap: 30px;
+    gap: 30px; /* This MUST match the calculation in JS */
     transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    will-change: transform;
 }
 
 .testimonial-card {

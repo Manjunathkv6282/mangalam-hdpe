@@ -405,8 +405,11 @@ body {
     }
 
     .hero-grid {
-        grid-template-columns: 1fr; /* Switch to single column stack */
+        display: flex;
+        flex-direction: column;
+        width: 100%;
         gap: 30px;
+        padding: 0px 25px;
     }
 
     /* Move Breadcrumb above the Image in stack */
